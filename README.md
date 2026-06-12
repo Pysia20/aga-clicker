@@ -1,0 +1,2 @@
+# aga-clicker
+:aga:
