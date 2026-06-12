@@ -1,2 +1,2 @@
 # aga-clicker
-:aga:
+![alt text](aga.png "aga")
