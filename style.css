@@ -19,6 +19,16 @@ main {
     width: 100vw;
 }
 
+.hand {
+    position: absolute;
+    left: 0;
+    top: 43%;
+}
+
+.hand img {
+    max-width: 30rem;
+}
+
 .upgrades {
     display: flex;
     flex-direction: row;

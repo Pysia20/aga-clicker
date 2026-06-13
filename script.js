@@ -1,12 +1,14 @@
 let points = 0
 let mult = 1
-const pointsOut = document.getElementById('points')
-const agaImg = document.getElementById('aga')
-const canvas = document.querySelector('canvas')
+const pointsOut = document.getElementById("points")
+const agaImg = document.getElementById("aga")
+const handImg = document.getElementById("hand")
+const canvas = document.querySelector("canvas")
 const ctx = canvas.getContext("2d")
 const particles = []
 const particleImg = new Image()
 particleImg.src = "aga.png"
+let autoAgas = 0
 
 function refreshPoints(amount) {
     points += amount
@@ -39,15 +41,29 @@ function UpMulti(cost, amount, object) {
     }
 }
 
-function AddClicker(cost, object) {
+function AddClicker(cost, amount,  object) {
     if (cost <= points) {
         points -= cost
-
+        autoAgas += amount
         object.remove()
         refreshPoints(0)
     }
 }
 
+function autoClick() {
+    handImg.animate([
+            {transform: 'translateX(0rem)'},
+            {transform: 'translateX(2.5rem)'},
+            {transform: 'translateX(0rem)'}
+        ], {
+            duration: 150,
+            iterations: 1,
+            easing: 'linear'
+        }
+    )
+    refreshPoints(autoAgas)
+}
+setInterval(autoClick, 1000)
 //canvas stuff
 class Particle {
     constructor() {
@@ -58,15 +74,20 @@ class Particle {
         this.vx = Math.cos(angle) * speed * (Math.random() > 0.5 ? 1 : -1)
         this.vy = -Math.sin(angle) * speed
         this.size = Math.random() * 10 + 20
+        this.opacity = 1
     }
 
     update() {
         this.vy += 0.2
         this.x += this.vx
         this.y += this.vy
+        if ((this.y > canvas.height / 2) && this.opacity > 0.025) {
+            this.opacity -= 0.025
+        }
     }
 
     draw() {
+        ctx.globalAlpha = this.opacity
         ctx.drawImage(particleImg, this.x - this.size / 2, this.y - this.size / 2, this.size, this.size)
     }
 }
@@ -87,9 +108,11 @@ function addParticles(num) {
 function updateParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     for (let i = particles.length - 1; i >= 0; i--) {
+        ctx.save()
         const p = particles[i]
         p.update()
         p.draw()
+        ctx.restore()
 
         if (p.y > canvas.height + 50) {
             particles.splice(i, 1)
