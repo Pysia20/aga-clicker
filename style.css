@@ -21,12 +21,22 @@ main {
 
 .hand {
     position: absolute;
-    left: 0;
+    right: 50%;
     top: 43%;
+    pointer-events: none;
 }
 
 .hand img {
     max-width: 30rem;
+    transform: translateX(-8rem);
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.aga img {
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .upgrades {
@@ -43,4 +53,8 @@ main {
     border: 0.2em solid lightgray;
     border-radius: 20%;
     padding: 0.5rem;
+}
+
+.hidden {
+    display: none;
 }

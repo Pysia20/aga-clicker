@@ -43,6 +43,10 @@ function UpMulti(cost, amount, object) {
 
 function AddClicker(cost, amount,  object) {
     if (cost <= points) {
+        if (autoAgas === 0) {
+            const temp = document.querySelectorAll(".hand.hidden")
+            temp[0].classList.remove("hidden")
+        }
         points -= cost
         autoAgas += amount
         object.remove()
@@ -52,9 +56,9 @@ function AddClicker(cost, amount,  object) {
 
 function autoClick() {
     handImg.animate([
-            {transform: 'translateX(0rem)'},
-            {transform: 'translateX(2.5rem)'},
-            {transform: 'translateX(0rem)'}
+            {transform: 'translateX(-8rem)'},
+            {transform: 'translateX(-4rem)'},
+            {transform: 'translateX(-8rem)'}
         ], {
             duration: 150,
             iterations: 1,
