@@ -53,6 +53,8 @@ main {
     border: 0.2em solid lightgray;
     border-radius: 20%;
     padding: 0.5rem;
+    width: 8rem;
+    height: 5rem;
 }
 
 .hidden {

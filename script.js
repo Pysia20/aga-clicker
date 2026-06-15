@@ -1,18 +1,67 @@
+//player stats
 let points = 0
 let mult = 1
+let autoAgas = 0
+let unlocked = []
+
+//HTML getElements
 const pointsOut = document.getElementById("points")
 const agaImg = document.getElementById("aga")
 const handImg = document.getElementById("hand")
+const upgrades = document.querySelector(".upgrades")
+
+//canvas stuff
 const canvas = document.querySelector("canvas")
 const ctx = canvas.getContext("2d")
 const particles = []
 const particleImg = new Image()
 particleImg.src = "aga.png"
-let autoAgas = 0
+
+/* pretty sure this is actually unneeded but keeping it for now
+class Upgrade {
+    constructor(name, cost, click) {
+        this.name = name
+        this.cost = cost
+        this.click = click
+    }
+}
+ */
+
+function addUpgrade(name, cost, type, amount) {
+    const child = document.createElement("div")
+    child.classList.add("upgrade")
+    child.setAttribute("onclick", type + "(" + cost + ", " + amount + ", this)")
+
+    const disName = document.createElement("h3")
+    disName.textContent = name
+
+    const  disCost = document.createElement("p")
+    disCost.textContent = cost
+
+    child.appendChild(disName)
+    child.appendChild(disCost)
+    upgrades.appendChild(child)
+}
+
+function unlockUpgrades() {
+    if (points > 100 && !unlocked.includes(1)) {
+        addUpgrade("test", "2", "UpMulti", 1)
+        unlocked.push(1)
+    }
+    if (points > 200 && !unlocked.includes(2)) {
+        addUpgrade("test2", "2", "UpMulti", 10)
+        unlocked.push(2)
+    }
+    if (points > 300 && !unlocked.includes(3)) {
+        addUpgrade("test", "2", "AddClicker", 10)
+        unlocked.push(3)
+    }
+}
 
 function refreshPoints(amount) {
     points += amount
     pointsOut.innerText = points
+    unlockUpgrades()
     if (amount > 0) {
         agaImg.animate([
                 {transform: 'scale(1)'},
@@ -68,6 +117,8 @@ function autoClick() {
     refreshPoints(autoAgas)
 }
 setInterval(autoClick, 1000)
+
+
 //canvas stuff
 class Particle {
     constructor() {
@@ -124,5 +175,4 @@ function updateParticles() {
     }
     requestAnimationFrame(updateParticles)
 }
-
 updateParticles()
