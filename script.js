@@ -27,10 +27,16 @@ class Upgrade {
 }
  */
 
-function addUpgrade(name, cost, type, amount) {
+function addUpgrade(name, cost, img, type, amount) {
     const child = document.createElement("div")
     child.classList.add("upgrade")
     child.setAttribute("onclick", type + "(" + cost + ", " + amount + ", this)")
+
+    const info = document.createElement("div")
+    info.classList.add("info")
+
+    const disImg = document.createElement("img")
+    disImg.src = img
 
     const disName = document.createElement("h3")
     disName.textContent = name
@@ -38,22 +44,24 @@ function addUpgrade(name, cost, type, amount) {
     const  disCost = document.createElement("p")
     disCost.textContent = cost
 
-    child.appendChild(disName)
-    child.appendChild(disCost)
+    child.appendChild(disImg)
+    info.appendChild(disName)
+    info.appendChild(disCost)
+    child.appendChild(info)
     upgrades.appendChild(child)
 }
 
 function unlockUpgrades() {
     if (points > 100 && !unlocked.includes(1)) {
-        addUpgrade("test", "2", "UpMulti", 1)
+        addUpgrade("test", "2", "hand.svg", "UpMulti", 1)
         unlocked.push(1)
     }
     if (points > 200 && !unlocked.includes(2)) {
-        addUpgrade("test2", "2", "UpMulti", 10)
+        addUpgrade("test2", "2", "hand.svg","UpMulti", 10)
         unlocked.push(2)
     }
     if (points > 300 && !unlocked.includes(3)) {
-        addUpgrade("test", "2", "AddClicker", 10)
+        addUpgrade("test", "2", "hand.svg","AddClicker", 10)
         unlocked.push(3)
     }
 }
