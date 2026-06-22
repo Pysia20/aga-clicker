@@ -52,6 +52,12 @@ function addUpgrade(name, cost, img, type, amount) {
 }
 
 function unlockUpgrades() {
+    if (!unlocked.includes(0)) {
+        addUpgrade("Markiplier", "10", "hand.svg", "UpMulti", 1)
+        addUpgrade("Hand", "20", "hand.svg", "AddClicker", 1)
+        addUpgrade("IdkMan", "30", "hand.svg", "UpMulti", 1)
+        unlocked.push(0)
+    }
     if (points > 100 && !unlocked.includes(1)) {
         addUpgrade("test", "2", "hand.svg", "UpMulti", 1)
         unlocked.push(1)
@@ -131,7 +137,7 @@ setInterval(autoClick, 1000)
 class Particle {
     constructor() {
         this.x = canvas.width / 2;
-        this.y = canvas.height / 2;
+        this.y = canvas.height / 2.5;
         const  angle = (Math.random() * 30 + 75) * (Math.PI / 180)
         const  speed = Math.random() * 3 + 10
         this.vx = Math.cos(angle) * speed * (Math.random() > 0.5 ? 1 : -1)
