@@ -58,12 +58,13 @@ main {
 }
 
 .upgrade img {
-    border: 0.2em solid lightgray;
+    border: 0.2em solid #eaeaea;
     border-radius: 20%;
     padding: 0.5rem;
     width: 7rem;
     height: 7rem;
     margin: 1rem;
+    background-color: #F1F1F1;
 }
 
 .upgrade:hover .info {
@@ -77,13 +78,14 @@ main {
     align-items: center;
     justify-content: center;
     visibility: hidden;
-    border: 0.2em solid lightgray;
+    border: 0.2em solid #eaeaea;
     border-radius: 33px;
     padding: 0.5rem;
     width: 9.5rem;
     height: 3.5rem;
     opacity: 0;
     transition: opacity 0.3s ease, visibility 0.3s ease;
+    background-color: #F1F1F1;
 }
 
 .info p, .info h3 {
