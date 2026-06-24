@@ -1,5 +1,7 @@
 //player stats
 let points = 0
+let streak = 0
+let clicked = false
 let mult = 1
 let autoAgas = 0
 let unlocked = []
@@ -9,6 +11,7 @@ let specialUpgrades = []
 const pointsOut = document.getElementById("points")
 const agaImg = document.getElementById("aga")
 const handImg = document.getElementById("hand")
+const fire = document.getElementById("fire")
 const upgrades = document.querySelector(".upgrades")
 
 //canvas stuff
@@ -55,8 +58,10 @@ function addUpgrade(name, cost, img, type, amount) {
 function unlockUpgrades() {
     if (!unlocked.includes(0)) {
         addUpgrade("Markiplier", "10", "hand.svg", "UpMulti", 1)
-        addUpgrade("Hand", "20", "hand.svg", "AddClicker", 1)
-        addUpgrade("IdkMan", "30", "hammer.svg", "unlockSpecial", "'particles'")
+        addUpgrade("Hand", "10", "hand.svg", "AddClicker", 1)
+        addUpgrade("Particles", "10", "hammer.svg", "unlockSpecial", "'particles'")
+        addUpgrade("Aganimation", "10", "hammer.svg", "unlockSpecial", "'aganimation'")
+        addUpgrade("Streak", "10", "hammer.svg", "unlockSpecial", "'streak'")
         unlocked.push(0)
     }
     if (points > 100 && !unlocked.includes(1)) {
@@ -78,6 +83,19 @@ function refreshPoints(amount) {
     pointsOut.innerText = points
     unlockUpgrades()
     if (amount > 0) {
+        animateAga(amount)
+        spawnParticles(amount)
+        streak += 1
+        clicked = true
+    }
+}
+
+function aga() {
+    refreshPoints(mult)
+}
+
+function animateAga(amount) {
+    if (specialUpgrades.includes("aganimation")) {
         agaImg.animate([
                 {transform: 'scale(1)'},
                 {transform: 'scale(' + (1 + amount / 100) + ') rotate(' + (1 + amount / 2) + 'deg)'},
@@ -88,12 +106,7 @@ function refreshPoints(amount) {
                 easing: 'linear'
             }
         )
-        spawnParticles(amount)
     }
-}
-
-function aga() {
-    refreshPoints(mult)
 }
 
 function spawnParticles(amount) {
@@ -149,6 +162,18 @@ function autoClick() {
     refreshPoints(autoAgas)
 }
 setInterval(autoClick, 1000)
+
+function updateStreak() {
+    if (specialUpgrades.includes("streak")) {
+        if (clicked === false) {
+            streak = 0
+        }
+        fire.style.width = streak + "rem"
+        console.log(fire.style.width)
+        clicked = false
+    }
+}
+setInterval(updateStreak, 200)
 
 
 //canvas stuff

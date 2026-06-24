@@ -37,6 +37,10 @@ main {
     -webkit-user-drag: none;
 }
 
+.aga {
+    position: relative;
+}
+
 .aga img {
     cursor: pointer;
     user-select: none;
@@ -96,4 +100,11 @@ main {
     display: none;
 }
 
-
+#fire {
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    z-index: -1;
+    width: 1px;
+}
