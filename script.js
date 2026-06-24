@@ -56,7 +56,7 @@ function unlockUpgrades() {
     if (!unlocked.includes(0)) {
         addUpgrade("Markiplier", "10", "hand.svg", "UpMulti", 1)
         addUpgrade("Hand", "20", "hand.svg", "AddClicker", 1)
-        addUpgrade("IdkMan", "30", "hammer.svg", "unlockSpecial", "particles")
+        addUpgrade("IdkMan", "30", "hammer.svg", "unlockSpecial", "'particles'")
         unlocked.push(0)
     }
     if (points > 100 && !unlocked.includes(1)) {
@@ -129,6 +129,7 @@ function unlockSpecial(cost, what, object) {
     if (cost <= points) {
         points -= cost
         specialUpgrades.push(what)
+        console.log(what)
         object.remove()
         refreshPoints(0)
     }
