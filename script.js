@@ -98,7 +98,7 @@ function animateAga(amount) {
     if (specialUpgrades.includes("aganimation")) {
         agaImg.animate([
                 {transform: 'scale(1)'},
-                {transform: 'scale(' + (1 + amount / 100) + ') rotate(' + (1 + amount / 2) + 'deg)'},
+                {transform: 'scale(' + (1 + Math.sqrt(amount) / 10) + ') rotate(' + (amount) + 'deg)'},
                 {transform: 'scale(1)'}
             ], {
                 duration: 150,
@@ -106,6 +106,8 @@ function animateAga(amount) {
                 easing: 'linear'
             }
         )
+
+        console.log(1 + Math.sqrt(amount) / 10)
     }
 }
 
@@ -164,14 +166,14 @@ function autoClick() {
 setInterval(autoClick, 1000)
 
 function updateStreak() {
+    if (clicked === false) {
+        streak = 0
+    }
     if (specialUpgrades.includes("streak")) {
-        if (clicked === false) {
-            streak = 0
-        }
         fire.style.width = streak + "rem"
         console.log(fire.style.width)
-        clicked = false
     }
+    clicked = false
 }
 setInterval(updateStreak, 200)
 
