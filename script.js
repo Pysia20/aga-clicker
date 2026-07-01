@@ -152,9 +152,9 @@ function unlockSpecial(cost, what, object) {
 
 function autoClick() {
     handImg.animate([
-            {transform: 'translateX(-8rem)'},
             {transform: 'translateX(-4rem)'},
-            {transform: 'translateX(-8rem)'}
+            {transform: 'translateX(1rem)'},
+            {transform: 'translateX(-4rem)'}
         ], {
             duration: 150,
             iterations: 1,

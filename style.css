@@ -12,6 +12,7 @@ canvas {
 body {
     padding: 0;
     margin: 0;
+    background-color: #F4F4F4;
 }
 
 main {
@@ -23,16 +24,27 @@ main {
     width: 100vw;
 }
 
+.gradient {
+    position: absolute;
+    z-index: 2;
+    left: -365%;
+    width: 250%;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(90deg,rgba(244, 244, 244, 1) 0%, rgba(244, 244, 244, 1) 25%, rgba(244, 244, 244, 0) 100%);
+}
+
 .hand {
     position: absolute;
-    right: 50%;
-    top: 43%;
+    z-index: 1;
+    right: 100%;
+    top: 15%;
     pointer-events: none;
 }
 
 .hand img {
     max-width: 30rem;
-    transform: translateX(-8rem);
+    transform: translateX(-4rem);
     user-select: none;
     -webkit-user-drag: none;
 }
@@ -105,6 +117,6 @@ main {
     top: 95%;
     left: 50%;
     transform: translate(-50%, -100%);
-    z-index: -1;
+    z-index: -2;
     width: 1px;
 }
