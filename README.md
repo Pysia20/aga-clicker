@@ -1,5 +1,5 @@
 # aga-clicker
-![alt text](aga.png "aga")
+![alt text](Assets/aga.png "aga")
 
 ## ideas
 - finger
