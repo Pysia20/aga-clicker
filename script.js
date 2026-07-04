@@ -19,17 +19,8 @@ const canvas = document.querySelector("canvas")
 const ctx = canvas.getContext("2d")
 const particles = []
 const particleImg = new Image()
-particleImg.src = "aga.png"
+particleImg.src = "Assets/aga.png"
 
-/* pretty sure this is actually unneeded but keeping it for now
-class Upgrade {
-    constructor(name, cost, click) {
-        this.name = name
-        this.cost = cost
-        this.click = click
-    }
-}
- */
 
 function addUpgrade(name, cost, img, type, amount) {
     const child = document.createElement("div")
@@ -40,7 +31,7 @@ function addUpgrade(name, cost, img, type, amount) {
     info.classList.add("info")
 
     const disImg = document.createElement("img")
-    disImg.src = img
+    disImg.src = "assets/" + img
 
     const disName = document.createElement("h3")
     disName.textContent = name
@@ -57,23 +48,23 @@ function addUpgrade(name, cost, img, type, amount) {
 
 function unlockUpgrades() {
     if (!unlocked.includes(0)) {
-        addUpgrade("Markiplier", "10", "hand.svg", "UpMulti", 1)
-        addUpgrade("Hand", "10", "hand.svg", "AddClicker", 1)
-        addUpgrade("Particles", "10", "hammer.svg", "unlockSpecial", "'particles'")
-        addUpgrade("Aganimation", "10", "hammer.svg", "unlockSpecial", "'aganimation'")
-        addUpgrade("Streak", "10", "hammer.svg", "unlockSpecial", "'streak'")
+        addUpgrade("Markiplier", "10", "handIcon.svg", "UpMulti", 1)
+        addUpgrade("Hand", "10", "handIcon.svg", "AddClicker", 1)
+        addUpgrade("Particles", "10", "hammerIcon.svg", "unlockSpecial", "'particles'")
+        addUpgrade("Aganimation", "10", "hammerIcon.svg", "unlockSpecial", "'aganimation'")
+        addUpgrade("Streak", "10", "hammerIcon.svg", "unlockSpecial", "'streak'")
         unlocked.push(0)
     }
     if (points > 100 && !unlocked.includes(1)) {
-        addUpgrade("test", "2", "hand.svg", "UpMulti", 1)
+        addUpgrade("test", "2", "handIcon.svg", "UpMulti", 1)
         unlocked.push(1)
     }
     if (points > 200 && !unlocked.includes(2)) {
-        addUpgrade("test2", "2", "hand.svg","UpMulti", 10)
+        addUpgrade("test2", "2", "handIcon.svg","UpMulti", 10)
         unlocked.push(2)
     }
     if (points > 300 && !unlocked.includes(3)) {
-        addUpgrade("test", "2", "hand.svg","AddClicker", 10)
+        addUpgrade("test", "2", "handIcon.svg","AddClicker", 10)
         unlocked.push(3)
     }
 }
