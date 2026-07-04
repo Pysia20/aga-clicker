@@ -31,7 +31,7 @@ function addUpgrade(name, cost, img, type, amount) {
     info.classList.add("info")
 
     const disImg = document.createElement("img")
-    disImg.src = "assets/" + img
+    disImg.src = "Assets/" + img
 
     const disName = document.createElement("h3")
     disName.textContent = name

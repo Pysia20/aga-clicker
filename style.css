@@ -1,5 +1,5 @@
 * {
-    font-family: sans-serif;
+    font-family: 'League Spartan' ,sans-serif;
 }
 
 canvas {
@@ -24,12 +24,17 @@ main {
     width: 100vw;
 }
 
+.pointsDiv p{
+    font-size: 4.5rem;
+    margin: 0;
+}
+
 .gradient {
     position: absolute;
     z-index: 2;
-    left: -365%;
-    width: 250%;
-    height: 100%;
+    left: -540%;
+    width: 24rem;
+    height: 75%;
     pointer-events: none;
     background: linear-gradient(90deg,rgba(244, 244, 244, 1) 0%, rgba(244, 244, 244, 1) 25%, rgba(244, 244, 244, 0) 100%);
 }
@@ -37,23 +42,48 @@ main {
 .hand {
     position: absolute;
     z-index: 1;
+    right: 360%;
+    top: 32%;
+    pointer-events: none;
+    display: block;
+    width: 15rem;
+}
+
+.hand img {
+    transform: translateX(-4rem);
+    user-select: none;
+    -webkit-user-drag: none;
+    height: auto;
+    display: block;
+}
+
+.hammer {
+    position: absolute;
+    z-index: 1;
     right: 100%;
     top: 15%;
     pointer-events: none;
 }
 
-.hand img {
-    max-width: 30rem;
-    transform: translateX(-4rem);
+.hammer img {
+    max-height: 30rem;
     user-select: none;
     -webkit-user-drag: none;
 }
 
 .aga {
     position: relative;
+    width: 7.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
 }
 
 .aga img {
+    width: 200%;
+    flex-shrink: 0;
+    z-index: 0;
     cursor: pointer;
     user-select: none;
     -webkit-user-drag: none;
@@ -69,17 +99,17 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: start;
-    height: 18rem;
+    height: 16rem;
     width: 9.5rem;
 }
 
 .upgrade img {
-    border: 0.2em solid #eaeaea;
-    border-radius: 20%;
+    border: 0.15em solid #101010;
+    border-radius: 25px;
     padding: 0.5rem;
     width: 7rem;
     height: 7rem;
-    margin: 1rem;
+    margin: 1rem 1rem 0.5rem;
     background-color: #F1F1F1;
 }
 
@@ -92,13 +122,13 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     visibility: hidden;
-    border: 0.2em solid #eaeaea;
-    border-radius: 33px;
+    border: 0.15em solid #101010;
+    border-radius: 30px;
     padding: 0.5rem;
     width: 9.5rem;
-    height: 3.5rem;
+    height: 3rem;
     opacity: 0;
     transition: opacity 0.3s ease, visibility 0.3s ease;
     background-color: #F1F1F1;
@@ -106,6 +136,18 @@ main {
 
 .info p, .info h3 {
     margin: 0;
+}
+
+.info h3 {
+    font-weight: normal;
+    font-size: 1.6rem;
+    letter-spacing: 0.03em;
+}
+
+.info p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    letter-spacing: 0.03em;
 }
 
 .hidden {
