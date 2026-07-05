@@ -92,6 +92,7 @@ main {
 .upgrades {
     display: flex;
     flex-direction: row;
+    height: 16rem;
 }
 
 .upgrade {
@@ -156,9 +157,11 @@ main {
 
 #fire {
     position: absolute;
-    top: 95%;
+    top: 99%;
     left: 50%;
     transform: translate(-50%, -100%);
     z-index: -2;
     width: 1px;
+    max-width: 40rem;
+    transition: width 0.2s linear;
 }

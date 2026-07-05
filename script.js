@@ -97,8 +97,6 @@ function animateAga(amount) {
                 easing: 'linear'
             }
         )
-
-        console.log(1 + Math.sqrt(amount) / 10)
     }
 }
 
@@ -161,7 +159,7 @@ function updateStreak() {
         streak = 0
     }
     if (specialUpgrades.includes("streak")) {
-        fire.style.width = streak + "rem"
+        fire.style.width = streak/1.5 + "rem"
         console.log(fire.style.width)
     }
     clicked = false
