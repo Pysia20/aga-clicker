@@ -60,15 +60,20 @@ main {
 .hammer {
     position: absolute;
     z-index: 1;
-    right: 100%;
-    top: 15%;
+    right: -186%;
+    top: -110%;
     pointer-events: none;
+    display: block;
+    width: 125%;
 }
 
 .hammer img {
     max-height: 30rem;
     user-select: none;
     -webkit-user-drag: none;
+    display: block;
+    pointer-events: auto;
+    transition: transform 0.15s ease-in;
 }
 
 .aga {

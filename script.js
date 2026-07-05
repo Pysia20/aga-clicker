@@ -3,7 +3,8 @@ let points = 0
 let streak = 0
 let clicked = false
 let mult = 1
-let autoAgas = 0
+let fingerPower = 0
+let hammerPower = 0
 let unlocked = []
 let specialUpgrades = []
 
@@ -11,6 +12,7 @@ let specialUpgrades = []
 const pointsOut = document.getElementById("points")
 const agaImg = document.getElementById("aga")
 const handImg = document.getElementById("hand")
+const hammerImg = document.getElementById("hammer")
 const fire = document.getElementById("fire")
 const upgrades = document.querySelector(".upgrades")
 
@@ -53,6 +55,7 @@ function unlockUpgrades() {
         addUpgrade("Particles", "10", "hammerIcon.svg", "unlockSpecial", "'particles'")
         addUpgrade("Aganimation", "10", "hammerIcon.svg", "unlockSpecial", "'aganimation'")
         addUpgrade("Streak", "10", "hammerIcon.svg", "unlockSpecial", "'streak'")
+        addUpgrade("Hammer", "10", "hammerIcon.svg", "AddHammer", 10)
         unlocked.push(0)
     }
     if (points > 100 && !unlocked.includes(1)) {
@@ -74,7 +77,6 @@ function refreshPoints(amount) {
     pointsOut.innerText = points
     unlockUpgrades()
     if (amount > 0) {
-        animateAga(amount)
         spawnParticles(amount)
         streak += 1
         clicked = true
@@ -83,6 +85,7 @@ function refreshPoints(amount) {
 
 function aga() {
     refreshPoints(mult)
+    animateAga(mult)
 }
 
 function animateAga(amount) {
@@ -103,7 +106,6 @@ function animateAga(amount) {
 function spawnParticles(amount) {
     if (specialUpgrades.includes("particles")) {
         addParticles(amount)
-        console.log("test")
     }
 }
 
@@ -118,22 +120,62 @@ function UpMulti(cost, amount, object) {
 
 function AddClicker(cost, amount, object) {
     if (cost <= points) {
-        if (autoAgas === 0) {
+        if (fingerPower === 0) {
             const temp = document.querySelectorAll(".hand.hidden")
             temp[0].classList.remove("hidden")
         }
         points -= cost
-        autoAgas += amount
+        fingerPower += amount
         object.remove()
         refreshPoints(0)
     }
+}
+
+function AddHammer(cost, amount, object) {
+    if (cost <= points) {
+        if (hammerPower === 0) {
+            const temp = document.querySelectorAll(".hammer.hidden")
+            temp[0].classList.remove("hidden")
+        }
+        points -= cost
+        hammerPower += amount
+        object.remove()
+        refreshPoints(0)
+    }
+}
+//TODO: add a cooldown and a autohammer upgrade
+function HammerAga() {
+    hammerImg.animate([
+            {transform: 'rotate(0deg) translateX(0) translateY(0)', offset: '0'},
+            {transform: 'rotate(-90deg) translateX(-36%) translateY(-30%)', offset: '0.3'},
+            {transform: 'rotate(-90deg) translateX(-36%) translateY(-30%)', offset: '0.5'},
+            {transform: 'rotate(0deg) translateX(0) translateY(0)', offset: '1'}
+        ], {
+        duration: 500,
+        iterations: 1,
+        easing: 'cubic-bezier(0.25, 0.89, 0.55, 1.08)'
+        }
+    )
+    agaImg.animate( [
+            {transform: 'scaleY(100%) translateY(0)', offset: '0'},
+            {transform: 'scaleY(100%) translateY(0)', offset: '0.2'},
+            {transform: 'scaleY(50%) translateY(45%)', offset: '0.3'},
+            {transform: 'scaleY(100%) translateY(0)', offset: '1'}
+        ], {
+        duration: 750,
+        iterations: 1,
+        easing: 'cubic-bezier(0.25, 0.89, 0.55, 1.08)'
+        }
+
+    )
+
+    refreshPoints(hammerPower)
 }
 
 function unlockSpecial(cost, what, object) {
     if (cost <= points) {
         points -= cost
         specialUpgrades.push(what)
-        console.log(what)
         object.remove()
         refreshPoints(0)
     }
@@ -150,7 +192,7 @@ function autoClick() {
             easing: 'linear'
         }
     )
-    refreshPoints(autoAgas)
+    refreshPoints(fingerPower)
 }
 setInterval(autoClick, 1000)
 
@@ -160,7 +202,6 @@ function updateStreak() {
     }
     if (specialUpgrades.includes("streak")) {
         fire.style.width = streak/1.5 + "rem"
-        console.log(fire.style.width)
     }
     clicked = false
 }
