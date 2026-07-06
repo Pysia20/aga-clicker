@@ -169,5 +169,5 @@ main {
     z-index: -2;
     width: 1px;
     max-width: 40rem;
-    transition: width 0.2s linear;
+    transition: width 0.2s linear, filter 0.1s linear;
 }
