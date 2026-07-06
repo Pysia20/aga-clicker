@@ -233,12 +233,12 @@ function updateStreak() {
             agaImg.style.filter = ""
         }
     }
-    breakStreak()
 }
 
 function breakStreak() {
-    setTimeout(() => {clicked = false}, 150)
+    clicked = false
 }
+setInterval(breakStreak, 200)
 
 //canvas stuff
 class Particle {
