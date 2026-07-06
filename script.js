@@ -5,6 +5,7 @@ let clicked = false
 let mult = 1
 let fingerPower = 0
 let hammerPower = 0
+let hammerTime = true
 let unlocked = []
 let specialUpgrades = []
 
@@ -56,6 +57,7 @@ function unlockUpgrades() {
         addUpgrade("Aganimation", "10", "hammerIcon.svg", "unlockSpecial", "'aganimation'")
         addUpgrade("Streak", "10", "hammerIcon.svg", "unlockSpecial", "'streak'")
         addUpgrade("Hammer", "10", "hammerIcon.svg", "AddHammer", 10)
+        addUpgrade("Hammer", "10", "hammerIcon.svg", "unlockSpecial", "'autoHammer'")
         unlocked.push(0)
     }
     if (points > 100 && !unlocked.includes(1)) {
@@ -76,23 +78,31 @@ function refreshPoints(amount) {
     points += amount
     pointsOut.innerText = points
     unlockUpgrades()
+    updateStreak()
     if (amount > 0) {
         spawnParticles(amount)
-        streak += 1
-        clicked = true
     }
 }
 
 function aga() {
-    refreshPoints(mult)
-    animateAga(mult)
+    let amount = Math.ceil(mult * (streak / 50))
+    if (amount < mult) {
+        amount = mult
+    }
+    clicked = true
+    refreshPoints(amount)
+    animateAga(amount)
 }
 
 function animateAga(amount) {
     if (specialUpgrades.includes("aganimation")) {
+        let rotateAmount = amount
+        if ((Math.random() * 2) > 1) {
+            rotateAmount = rotateAmount * -1
+        }
         agaImg.animate([
                 {transform: 'scale(1)'},
-                {transform: 'scale(' + (1 + Math.sqrt(amount) / 10) + ') rotate(' + (amount) + 'deg)'},
+                {transform: 'scale(' + (1 + Math.sqrt(amount) / 10) + ') rotate(' + (rotateAmount) + 'deg)'},
                 {transform: 'scale(1)'}
             ], {
                 duration: 150,
@@ -143,33 +153,36 @@ function AddHammer(cost, amount, object) {
         refreshPoints(0)
     }
 }
-//TODO: add a cooldown and a autohammer upgrade
+
 function HammerAga() {
-    hammerImg.animate([
-            {transform: 'rotate(0deg) translateX(0) translateY(0)', offset: '0'},
-            {transform: 'rotate(-90deg) translateX(-36%) translateY(-30%)', offset: '0.3'},
-            {transform: 'rotate(-90deg) translateX(-36%) translateY(-30%)', offset: '0.5'},
-            {transform: 'rotate(0deg) translateX(0) translateY(0)', offset: '1'}
-        ], {
-        duration: 500,
-        iterations: 1,
-        easing: 'cubic-bezier(0.25, 0.89, 0.55, 1.08)'
-        }
-    )
-    agaImg.animate( [
-            {transform: 'scaleY(100%) translateY(0)', offset: '0'},
-            {transform: 'scaleY(100%) translateY(0)', offset: '0.2'},
-            {transform: 'scaleY(50%) translateY(45%)', offset: '0.3'},
-            {transform: 'scaleY(100%) translateY(0)', offset: '1'}
-        ], {
-        duration: 750,
-        iterations: 1,
-        easing: 'cubic-bezier(0.25, 0.89, 0.55, 1.08)'
-        }
+    if (hammerTime) {
+        hammerImg.animate([
+                {transform: 'rotate(0deg) translateX(0) translateY(0)', offset: '0'},
+                {transform: 'rotate(-90deg) translateX(-36%) translateY(-30%)', offset: '0.3'},
+                {transform: 'rotate(-90deg) translateX(-36%) translateY(-30%)', offset: '0.5'},
+                {transform: 'rotate(0deg) translateX(0) translateY(0)', offset: '1'}
+            ], {
+                duration: 500,
+                iterations: 1,
+                easing: 'cubic-bezier(0.25, 0.89, 0.55, 1.08)'
+            }
+        )
+        agaImg.animate([
+                {transform: 'scaleY(100%) translateY(0)', offset: '0'},
+                {transform: 'scaleY(100%) translateY(0)', offset: '0.2'},
+                {transform: 'scaleY(50%) translateY(45%)', offset: '0.3'},
+                {transform: 'scaleY(100%) translateY(0)', offset: '1'}
+            ], {
+                duration: 750,
+                iterations: 1,
+                easing: 'cubic-bezier(0.25, 0.89, 0.55, 1.08)'
+            }
+        )
 
-    )
-
-    refreshPoints(hammerPower)
+        hammerTime = false
+        refreshPoints(hammerPower)
+        HammerCooldown()
+    }
 }
 
 function unlockSpecial(cost, what, object) {
@@ -196,17 +209,36 @@ function autoClick() {
 }
 setInterval(autoClick, 1000)
 
-function updateStreak() {
-    if (clicked === false) {
-        streak = 0
-    }
-    if (specialUpgrades.includes("streak")) {
-        fire.style.width = streak/1.5 + "rem"
-    }
-    clicked = false
+function HammerCooldown() {
+    setTimeout(() => {
+        hammerTime = true
+        if (specialUpgrades.includes("autoHammer")) {
+            HammerAga()
+        }
+    }, 5000)
 }
-setInterval(updateStreak, 200)
 
+function updateStreak() {
+    if (specialUpgrades.includes("streak")) {
+        if (clicked === false) {
+            streak = 0
+        } else if (streak < 100) {
+            streak++
+        }
+
+        fire.style.width = streak/1.5 + "rem"
+        if (streak > 25) {
+            agaImg.style.filter = "saturate(" + streak / 4 + ")"
+        } else {
+            agaImg.style.filter = ""
+        }
+    }
+    breakStreak()
+}
+
+function breakStreak() {
+    setTimeout(() => {clicked = false}, 150)
+}
 
 //canvas stuff
 class Particle {

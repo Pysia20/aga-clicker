@@ -92,6 +92,7 @@ main {
     cursor: pointer;
     user-select: none;
     -webkit-user-drag: none;
+    transition: filter 0.5s ease;
 }
 
 .upgrades {
@@ -119,7 +120,7 @@ main {
     background-color: #F1F1F1;
 }
 
-.upgrade:hover .info {
+.upgrade img:hover + .info {
     visibility: visible;
     opacity: 1;
 }
