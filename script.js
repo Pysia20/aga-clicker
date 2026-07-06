@@ -227,7 +227,7 @@ function updateStreak() {
         }
 
         fire.style.width = streak/1.5 + "rem"
-        fire.style.filter = "saturate(" + (Math.random() * (110 - 95 + 1)  + 95) + "%)"
+        fire.style.filter = "saturate(" + (Math.random() * (108 - 92)  + 92) + "%)"
         if (streak > 25) {
             agaImg.style.filter = "saturate(" + streak / 4 + ")"
         } else {
