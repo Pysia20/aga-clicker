@@ -51,26 +51,46 @@ function addUpgrade(name, cost, img, type, amount) {
 
 function unlockUpgrades() {
     if (!unlocked.includes(0)) {
-        addUpgrade("Markiplier", "10", "handIcon.svg", "UpMulti", 1)
-        addUpgrade("Hand", "10", "handIcon.svg", "AddClicker", 1)
-        addUpgrade("Particles", "10", "hammerIcon.svg", "unlockSpecial", "'particles'")
-        addUpgrade("Aganimation", "10", "hammerIcon.svg", "unlockSpecial", "'aganimation'")
-        addUpgrade("Streak", "10", "hammerIcon.svg", "unlockSpecial", "'streak'")
-        addUpgrade("Hammer", "10", "hammerIcon.svg", "AddHammer", 10)
-        addUpgrade("Hammer", "10", "hammerIcon.svg", "unlockSpecial", "'autoHammer'")
         unlocked.push(0)
     }
-    if (points > 100 && !unlocked.includes(1)) {
-        addUpgrade("test", "2", "handIcon.svg", "UpMulti", 1)
+    if (points > 10 && !unlocked.includes(1)) {
+        addUpgrade("More Agas", "25", "upIcon.svg", "UpMulti", 1)
         unlocked.push(1)
     }
-    if (points > 200 && !unlocked.includes(2)) {
-        addUpgrade("test2", "2", "handIcon.svg","UpMulti", 10)
+    if (points > 50 && !unlocked.includes(2)) {
+        addUpgrade("John Hand", "50", "handIcon.svg", "AddClicker", 1)
+        addUpgrade("MMore Agas", "100", "upIcon.svg", "UpMulti", 1)
         unlocked.push(2)
     }
-    if (points > 300 && !unlocked.includes(3)) {
-        addUpgrade("test", "2", "handIcon.svg","AddClicker", 10)
+    if (points > 99 && !unlocked.includes(3)) {
+        addUpgrade("Aganimation", "99", "agaIcon.svg", "unlockSpecial", "'aganimation'")
+        addUpgrade("Johner John", "111", "handIcon.svg", "AddClicker", 2)
         unlocked.push(3)
+    }
+    if (points > 200 && !unlocked.includes(4)) {
+        addUpgrade("Aga Mitosis", "200", "agaIcon.svg", "unlockSpecial", "'particles'")
+        addUpgrade("Arson", "250", "fireIcon.svg", "unlockSpecial", "'streak'")
+        addUpgrade("MORE AGAS", "400", "upIcon.svg", "UpMulti", 2)
+        unlocked.push(4)
+    }
+    if (points > 400 && !unlocked.includes(5)) {
+        addUpgrade("Bonk", "500", "hammerIcon.svg", "AddHammer", 50)
+        addUpgrade("Johniest John", "700", "handIcon.svg", "AddClicker", 3)
+        unlocked.push(5)
+    }
+    if (points > 600 && !unlocked.includes(6)) {
+        addUpgrade("B O N K", "500", "hammerIcon.svg", "AddHammer", 50)
+        addUpgrade("Promote John", "1000", "hammerIcon.svg", "unlockSpecial", "'autoHammer'")
+        unlocked.push(6)
+    }
+    if (points > 1000 && !unlocked.includes(7)) {
+        addUpgrade("Aga Blessing", "2000", "agaIcon.svg", "UpMulti", 10)
+        unlocked.push(7)
+    }
+    if (points > 5000 && !unlocked.includes(8)) {
+        addUpgrade("Test Ur PC", "10000", "hammerIcon.svg", "AddHammer", 69000)
+        addUpgrade("Waga", "Priceless", "agaIcon.svg", "UpMulti", 1)
+        unlocked.push(8)
     }
 }
 
