@@ -25,7 +25,7 @@ Simply double-click the HTML file to open the website or open the folder in an I
 
 ## FAQ
 ### Why?
-- Well, uh... you see. Aga.
+- Well, uh... you see. Aga <img src="Assets/aga.png" alt="aga" width="10">
 
 ### Should I Try Playing Rain World?
 - Yes!
@@ -65,8 +65,10 @@ Also, the particle physics were made with quite a lot of AI help unfortunately
 <br>
 <br>
 <br>
+<br>
+<br>
 
-![Waga](Github/waga.gif "waga.gif")
+<img src="Github/waga.gif" alt="waga gif" width="120">
 
 ~~*also apparently this emoji is a twitch joke or something?\
 I just found this emoji with my friend, and we thought it looked funny lol*~~
