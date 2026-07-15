@@ -6,6 +6,8 @@ let mult = 1
 let fingerPower = 0
 let hammerPower = 0
 let hammerTime = true
+let pressPower = 100
+let pressTime = true
 let unlocked = []
 let specialUpgrades = []
 
@@ -15,6 +17,8 @@ const agaImg = document.getElementById("aga")
 const handImg = document.getElementById("hand")
 const hammerImg = document.getElementById("hammer")
 const fire = document.getElementById("fire")
+const pressImg = document.getElementById("pressHead")
+const pressDiv = document.querySelector(".press")
 const upgrades = document.querySelector(".upgrades")
 
 //canvas stuff
@@ -202,6 +206,54 @@ function HammerAga() {
         hammerTime = false
         refreshPoints(hammerPower)
         HammerCooldown()
+    }
+}
+
+function pressAga() {
+    if (pressTime) {
+        const rect = pressImg.getBoundingClientRect()
+        const targetPercent = 0.38
+        const targetLine = window.innerHeight * targetPercent
+        const target = targetLine - (rect.top + rect.height)
+
+        pressImg.animate([
+                {transform: 'translateY(0)', offset: '0'},
+                {transform: 'translateY(' + target + 'px)', offset: '0.4'},
+                {transform: 'translateY(' + target + 'px)', offset: '0.7'},
+                {transform: 'translateY(0)', offset: '1'}
+            ], {
+                duration: 7500,
+                iterations: 1,
+                easing: 'linear'
+            }
+        )
+        agaImg.style.transformOrigin = "bottom"
+        const animation = agaImg.animate([
+                {transform: 'scaleY(100%)', offset: '0'},
+                {transform: 'scaleY(100%)', offset: '0.2'},
+                {transform: 'scaleY(50%)', offset: '0.4'},
+                {transform: 'scaleY(50%)', offset: '0.7'},
+            {transform: 'scaleY(100%)', offset: '0.8'},
+                {transform: 'scaleY(100%)', offset: '1'}
+            ], {
+                duration: 7500,
+                iterations: 1,
+                easing: 'linear'
+            }
+        )
+        animation.onfinish = () => {
+            agaImg.style.transformOrigin = "center"
+        }
+
+        const timeout = 2750 / pressPower
+        setTimeout(() => {
+            for (let i = 0; i < pressPower; i++) {
+                setTimeout(() => {
+                    refreshPoints(1)
+                }, timeout * i)
+            }
+        }, 2500)
+
     }
 }
 

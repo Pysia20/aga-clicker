@@ -85,13 +85,17 @@ main {
     justify-content: center;
 }
 
+.pressBase {
+    z-index: 2;
+}
+
 .pressBase img {
     height: 100%;
 }
 
 .pressHead {
     position: absolute;
-    z-index: -1;
+    z-index: 1;
     width: 18rem;
     top: -625%;
 }
