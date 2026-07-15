@@ -213,9 +213,10 @@ function pressAga() {
     if (pressTime) {
         const rectPress = pressImg.getBoundingClientRect()
         const rectAga = agaImg.getBoundingClientRect()
+        const eyebrowsOffset = rectAga.height * 0.25
         const squishPoint = rectAga.bottom - (rectAga.height / 2)
-        const squishDistance = squishPoint - rectPress.bottom
-        const touchDistance = rectAga.top - rectPress.bottom
+        const squishDistance = (squishPoint - rectPress.bottom) + eyebrowsOffset
+        const touchDistance = (rectAga.top - rectPress.bottom) + eyebrowsOffset
         let fraction = touchDistance / squishDistance
         fraction = Math.min(1, Math.max(0, fraction))
         const touchOffset = 0.4 * fraction
@@ -235,12 +236,12 @@ function pressAga() {
         )
         agaImg.style.transformOrigin = "bottom"
         const animation = agaImg.animate([
-                {transform: 'scaleY(100%)', offset: '0'},
-                {transform: 'scaleY(100%)', offset: touchOffset},
-                {transform: 'scaleY(50%)', offset: '0.4'},
-                {transform: 'scaleY(50%)', offset: '0.7'},
-            {transform: 'scaleY(100%)', offset: untouchOffset},
-                {transform: 'scaleY(100%)', offset: '1'}
+                {transform: 'scaleY(100%) scaleX(100%)', offset: '0'},
+                {transform: 'scaleY(100%) scaleX(100%)', offset: touchOffset},
+                {transform: 'scaleY(50%) scaleX(150%)', offset: '0.4'},
+                {transform: 'scaleY(50%) scaleX(150%)', offset: '0.7'},
+            {transform: 'scaleY(100%) scaleX(100%)', offset: untouchOffset},
+                {transform: 'scaleY(100%) scaleX(100%)', offset: '1'}
             ], {
                 duration: 7500,
                 iterations: 1,
@@ -251,14 +252,14 @@ function pressAga() {
             agaImg.style.transformOrigin = "center"
         }
 
-        const timeout = 2750 / pressPower
+        const timeout = 2500 / pressPower
         setTimeout(() => {
             for (let i = 0; i < pressPower; i++) {
                 setTimeout(() => {
                     refreshPoints(1)
                 }, timeout * i)
             }
-        }, 2000)
+        }, 2500)
 
     }
 }
