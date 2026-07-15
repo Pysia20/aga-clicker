@@ -6,7 +6,7 @@ let mult = 1
 let fingerPower = 0
 let hammerPower = 0
 let hammerTime = true
-let pressPower = 100
+let pressPower = 0
 let pressTime = true
 let unlocked = []
 let specialUpgrades = []
@@ -59,6 +59,7 @@ function unlockUpgrades() {
     }
     if (points > 10 && !unlocked.includes(1)) {
         addUpgrade("More Agas", "25", "upIcon.svg", "UpMulti", 1)
+        addUpgrade("SQUISH", "25", "upIcon.svg", "addPress", 100)
         unlocked.push(1)
     }
     if (points > 50 && !unlocked.includes(2)) {
@@ -209,6 +210,19 @@ function HammerAga() {
     }
 }
 
+function addPress(cost, amount, object) {
+    if (cost <= points) {
+        if (pressPower === 0) {
+            const temp = document.querySelectorAll(".press.hidden")
+            temp[0].classList.remove("hidden")
+        }
+        points -= cost
+        pressPower += amount
+        object.remove()
+        refreshPoints(0)
+    }
+}
+
 function pressAga() {
     if (pressTime) {
         const rectPress = pressImg.getBoundingClientRect()
@@ -252,6 +266,8 @@ function pressAga() {
             agaImg.style.transformOrigin = "center"
         }
 
+        pressTime = false
+        PressCooldown()
         const timeout = 2500 / pressPower
         setTimeout(() => {
             for (let i = 0; i < pressPower; i++) {
@@ -260,7 +276,6 @@ function pressAga() {
                 }, timeout * i)
             }
         }, 2500)
-
     }
 }
 
@@ -295,6 +310,12 @@ function HammerCooldown() {
             HammerAga()
         }
     }, 5000)
+}
+
+function PressCooldown() {
+    setTimeout( () => {
+        pressTime = true
+    }, 30000)
 }
 
 function updateStreak() {
