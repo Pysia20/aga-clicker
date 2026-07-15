@@ -211,15 +211,21 @@ function HammerAga() {
 
 function pressAga() {
     if (pressTime) {
-        const rect = pressImg.getBoundingClientRect()
-        const targetPercent = 0.38
-        const targetLine = window.innerHeight * targetPercent
-        const target = targetLine - (rect.top + rect.height)
+        const rectPress = pressImg.getBoundingClientRect()
+        const rectAga = agaImg.getBoundingClientRect()
+        const squishPoint = rectAga.bottom - (rectAga.height / 2)
+        const squishDistance = squishPoint - rectPress.bottom
+        const touchDistance = rectAga.top - rectPress.bottom
+        let fraction = touchDistance / squishDistance
+        fraction = Math.min(1, Math.max(0, fraction))
+        const touchOffset = 0.4 * fraction
+        const untouchOffset = 0.7 + 0.3 * (1 - fraction)
+        console.log(fraction)
 
         pressImg.animate([
                 {transform: 'translateY(0)', offset: '0'},
-                {transform: 'translateY(' + target + 'px)', offset: '0.4'},
-                {transform: 'translateY(' + target + 'px)', offset: '0.7'},
+                {transform: 'translateY(' + squishDistance + 'px)', offset: '0.4'},
+                {transform: 'translateY(' + squishDistance + 'px)', offset: '0.7'},
                 {transform: 'translateY(0)', offset: '1'}
             ], {
                 duration: 7500,
@@ -230,10 +236,10 @@ function pressAga() {
         agaImg.style.transformOrigin = "bottom"
         const animation = agaImg.animate([
                 {transform: 'scaleY(100%)', offset: '0'},
-                {transform: 'scaleY(100%)', offset: '0.2'},
+                {transform: 'scaleY(100%)', offset: touchOffset},
                 {transform: 'scaleY(50%)', offset: '0.4'},
                 {transform: 'scaleY(50%)', offset: '0.7'},
-            {transform: 'scaleY(100%)', offset: '0.8'},
+            {transform: 'scaleY(100%)', offset: untouchOffset},
                 {transform: 'scaleY(100%)', offset: '1'}
             ], {
                 duration: 7500,
@@ -252,7 +258,7 @@ function pressAga() {
                     refreshPoints(1)
                 }, timeout * i)
             }
-        }, 2500)
+        }, 2000)
 
     }
 }
