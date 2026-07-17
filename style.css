@@ -90,6 +90,10 @@ main {
     z-index: 2;
 }
 
+.pressBase:hover {
+    cursor: pointer;
+}
+
 .pressBase img {
     height: 100%;
 }
@@ -149,6 +153,10 @@ main {
     width: 9.5rem;
 }
 
+.upgrade img:hover {
+    cursor: pointer;
+}
+
 .upgrade img {
     border: 0.15em solid #101010;
     border-radius: 25px;
@@ -206,6 +214,11 @@ main {
     width: 10rem;
     height: 100%;
     justify-content: space-around;
+}
+
+.spacer {
+    height: 4rem;
+    width: 1rem;
 }
 
 .hidden {
