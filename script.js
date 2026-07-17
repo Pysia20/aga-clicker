@@ -106,10 +106,9 @@ function unlockUpgrades() {
 function refreshPoints(amount) {
     points += amount
     pointsOut.innerText = points
-    PILS += amount
     unlockUpgrades()
     updateStreak()
-    updateStats()
+    updateStats(amount, "PPS")
     if (amount > 0) {
         spawnParticles(amount)
     }
@@ -121,7 +120,7 @@ function aga() {
         amount = mult
     }
     clicked = true
-    CILS += 1
+    updateStats(1, "CPS")
     refreshPoints(amount)
     animateAga(amount)
 }
@@ -348,14 +347,22 @@ function breakStreak() {
 }
 setInterval(breakStreak, 200)
 
-function updateStats() {
+function updateStats(amount, type) {
+    if (type === "CPS") {
+        CILS += amount
+        setTimeout(() => {
+            CILS -= amount
+        }, 1000)
+    }
+    if (type === "PPS") {
+        PILS += amount
+        setTimeout(() => {
+            PILS -= amount
+        }, 1000)
+    }
     CPS.innerHTML = "CPS: " + CILS
     PPS.innerHTML = "PPS: " + PILS
 }
-setInterval(() => {
-    CILS = 0
-    PILS = 0
-}, 1000)
 
 //canvas stuff
 class Particle {
