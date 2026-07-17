@@ -49,7 +49,6 @@ Simply double-click the HTML file to open the website or open the folder in an I
 - name aga
 - credits
 - some kind of slack integration
-- cps counter
 
 ## AI Disclosure 
 I used AI to help with CSS (For example: How to create a gradient) and to understand and fix some bugs.

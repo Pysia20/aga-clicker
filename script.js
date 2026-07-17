@@ -12,6 +12,7 @@ let pressPower = 0
 let pressTime = true
 let unlocked = []
 let specialUpgrades = []
+let unlockedSkins = ["aga.png", "waga.gif"]
 
 //HTML getElements
 const pointsOut = document.getElementById("points")
@@ -371,6 +372,15 @@ function updateStats(amount, type) {
         CPS.innerHTML = "CPS: " + CILS
         PPS.innerHTML = "PPS: " + PILS
     }
+}
+
+function changeSkin() {
+    let currentSkin = agaImg.src.split("/")
+    currentSkin = currentSkin[currentSkin.length - 1]
+    const currentIndex = unlockedSkins.indexOf(currentSkin)
+    console.log(currentIndex)
+    console.log(currentSkin)
+    agaImg.src = "Assets/" + unlockedSkins[(currentIndex + 1) % (unlockedSkins.length)]
 }
 
 //canvas stuff

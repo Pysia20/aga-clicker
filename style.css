@@ -104,6 +104,17 @@ main {
     width: 100%;
 }
 
+.wardrobe {
+    position: absolute;
+    left: 180%;
+    bottom: -5%;
+    width: 40%;
+}
+
+.wardrobe img {
+    width: 100%;
+}
+
 .aga {
     position: relative;
     width: 7.5rem;
@@ -114,7 +125,6 @@ main {
 }
 
 .aga img {
-    width: 200%;
     flex-shrink: 0;
     z-index: 0;
     cursor: pointer;
@@ -186,14 +196,19 @@ main {
     letter-spacing: 0.03em;
 }
 
+.statsCon{
+    height: 3rem;
+}
+
 .stats {
     display: flex;
     width: 10rem;
+    height: 100%;
     justify-content: space-around;
 }
 
 .hidden {
-    opacity: 0;
+    display: none;
 }
 
 #fire {
@@ -205,4 +220,9 @@ main {
     width: 1px;
     max-width: 40rem;
     transition: width 0.2s linear, filter 0.1s linear;
+}
+
+#aga {
+    height: 15rem;
+    max-width: 30rem;
 }
