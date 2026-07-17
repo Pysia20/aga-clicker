@@ -1,20 +1,27 @@
 //player stats
 let points = 0
-let streak = 0
 let PILS = 0 // points in last second
 let CILS = 0 //clicks in last second
 let totalC = 0
 let totalP = 0
-let clicked = false
+
+//multipliers
+let streak = 0
 let mult = 1
 let fingerPower = 0
 let hammerPower = 0
-let hammerTime = true
-let pressPower = 0
-let pressTime = true
+
+//unlocks
 let unlocked = []
 let specialUpgrades = []
 let unlockedSkins = ["aga.png"]
+
+//cooldowns
+let clicked = false
+let hammerTime = true
+let pressPower = 0
+let pressTime = true
+
 
 //HTML getElements
 const pointsOut = document.getElementById("points")
