@@ -12,7 +12,7 @@ let pressPower = 0
 let pressTime = true
 let unlocked = []
 let specialUpgrades = []
-let unlockedSkins = ["aga.png", "waga.gif"]
+let unlockedSkins = ["aga.png"]
 
 //HTML getElements
 const pointsOut = document.getElementById("points")
@@ -66,6 +66,7 @@ function unlockUpgrades() {
         addUpgrade("More Agas", "25", "upIcon.svg", "UpMulti", 1)
         addUpgrade("SQUISH", "25", "upIcon.svg", "addPress", 100)
         addUpgrade("Stats", "99", "statsIcon.svg", "unlockSpecial", "'stats'")
+        addUpgrade("SKIN", "10", "statsIcon.svg", "unlockSkin", "'waga.gif'")
         unlocked.push(1)
     }
     if (points > 50 && !unlocked.includes(2)) {
@@ -112,9 +113,7 @@ function unlockSpecial(cost, what, object) {
         const temp = document.querySelector("." + what + ".hidden")
         if (temp) {
             temp.classList.remove("hidden")
-            console.log("test")
         }
-        console.log(temp)
         object.remove()
         refreshPoints(0)
     }
@@ -258,7 +257,6 @@ function pressAga() {
         fraction = Math.min(1, Math.max(0, fraction))
         const touchOffset = 0.4 * fraction
         const untouchOffset = 0.7 + 0.3 * (1 - fraction)
-        console.log(fraction)
 
         pressImg.animate([
                 {transform: 'translateY(0)', offset: '0'},
@@ -371,6 +369,20 @@ function updateStats(amount, type) {
         }
         CPS.innerHTML = "CPS: " + CILS
         PPS.innerHTML = "PPS: " + PILS
+    }
+}
+
+function unlockSkin(cost, name, object) {
+    if (cost <= points) {
+        if (unlockedSkins.length === 1) {
+            const temp = document.querySelector(".wardrobe.hidden")
+            temp.classList.remove("hidden")
+        }
+        unlockedSkins.push(name)
+        agaImg.src = "Assets/" + name
+        points -= cost
+        object.remove()
+        refreshPoints(0)
     }
 }
 
