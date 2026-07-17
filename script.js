@@ -64,7 +64,7 @@ function unlockUpgrades() {
     if (points > 10 && !unlocked.includes(1)) {
         addUpgrade("More Agas", "25", "upIcon.svg", "UpMulti", 1)
         addUpgrade("SQUISH", "25", "upIcon.svg", "addPress", 100)
-        addUpgrade("Stats", "99", "agaIcon.svg", "unlockSpecial", "'stats'")
+        addUpgrade("Stats", "99", "statsIcon.svg", "unlockSpecial", "'stats'")
         unlocked.push(1)
     }
     if (points > 50 && !unlocked.includes(2)) {
