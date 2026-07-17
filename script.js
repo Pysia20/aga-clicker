@@ -70,7 +70,7 @@ function unlockUpgrades() {
         addUpgrade("More Agas", "25", "upIcon.svg", "UpMulti", 1)
         addUpgrade("SQUISH", "25", "upIcon.svg", "addPress", 100)
         addUpgrade("Stats", "99", "statsIcon.svg", "unlockSpecial", "'stats'")
-        addUpgrade("Stats+", "9", "statsIcon.svg", "unlockSpecial", "'statsExtra'")
+        addUpgrade("Stats+", "9", "statsIcon.svg", "unlockSpecial", "'statsExtra,nerdaga.png'")
         addUpgrade("SKIN", "10", "statsIcon.svg", "unlockSkin", "'waga.gif'")
         unlocked.push(1)
     }
@@ -113,13 +113,19 @@ function unlockUpgrades() {
 
 function unlockSpecial(cost, what, object) {
     if (cost <= points) {
+        what = what.split(",")
+        const upgrade = what[0]
         points -= cost
-        specialUpgrades.push(what)
-        const temp = document.querySelector("." + what + ".hidden")
+        specialUpgrades.push(upgrade)
+        const temp = document.querySelector("." + upgrade + ".hidden")
         if (temp) {
             temp.classList.remove("hidden")
         }
-        object.remove()
+        if (what[1]) {
+            unlockSkin(0, what[1], object)
+        } else {
+            object.remove()
+        }
         refreshPoints(0)
     }
 }
