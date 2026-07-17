@@ -37,13 +37,13 @@ particleImg.src = "Assets/aga.png"
 function addUpgrade(name, cost, img, type, amount) {
     const child = document.createElement("div")
     child.classList.add("upgrade")
-    child.setAttribute("onclick", type + "(" + cost + ", " + amount + ", this)")
 
     const info = document.createElement("div")
     info.classList.add("info")
 
     const disImg = document.createElement("img")
     disImg.src = "Assets/" + img
+    disImg.setAttribute("onclick", type + "(" + cost + ", " + amount + ", this.parentElement)")
 
     const disName = document.createElement("h3")
     disName.textContent = name
