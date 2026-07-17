@@ -186,6 +186,12 @@ main {
     letter-spacing: 0.03em;
 }
 
+.stats {
+    display: flex;
+    width: 10rem;
+    justify-content: space-around;
+}
+
 .hidden {
     display: none;
 }

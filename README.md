@@ -35,7 +35,6 @@ Simply double-click the HTML file to open the website or open the folder in an I
 - leaderboard
 - multipliers as part of other upgrades
 - better style as upgrade
-- hydraulic press
 - slugcat 
 - background skins
 - custom colors

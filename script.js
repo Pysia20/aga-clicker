@@ -1,6 +1,8 @@
 //player stats
 let points = 0
 let streak = 0
+let PILS = 0 // points in last second
+let CILS = 0 //clicks in last second
 let clicked = false
 let mult = 1
 let fingerPower = 0
@@ -18,6 +20,8 @@ const handImg = document.getElementById("hand")
 const hammerImg = document.getElementById("hammer")
 const fire = document.getElementById("fire")
 const pressImg = document.getElementById("pressHead")
+const PPS = document.getElementById("pps")
+const CPS = document.getElementById("cps")
 const pressDiv = document.querySelector(".press")
 const upgrades = document.querySelector(".upgrades")
 
@@ -102,8 +106,10 @@ function unlockUpgrades() {
 function refreshPoints(amount) {
     points += amount
     pointsOut.innerText = points
+    PILS += amount
     unlockUpgrades()
     updateStreak()
+    updateStats()
     if (amount > 0) {
         spawnParticles(amount)
     }
@@ -115,6 +121,7 @@ function aga() {
         amount = mult
     }
     clicked = true
+    CILS += 1
     refreshPoints(amount)
     animateAga(amount)
 }
@@ -340,6 +347,15 @@ function breakStreak() {
     clicked = false
 }
 setInterval(breakStreak, 200)
+
+function updateStats() {
+    CPS.innerHTML = "CPS: " + CILS
+    PPS.innerHTML = "PPS: " + PILS
+}
+setInterval(() => {
+    CILS = 0
+    PILS = 0
+}, 1000)
 
 //canvas stuff
 class Particle {
