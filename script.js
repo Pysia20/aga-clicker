@@ -3,6 +3,8 @@ let points = 0
 let streak = 0
 let PILS = 0 // points in last second
 let CILS = 0 //clicks in last second
+let totalC = 0
+let totalP = 0
 let clicked = false
 let mult = 1
 let fingerPower = 0
@@ -23,6 +25,8 @@ const fire = document.getElementById("fire")
 const pressImg = document.getElementById("pressHead")
 const PPS = document.getElementById("pps")
 const CPS = document.getElementById("cps")
+const totalCP = document.getElementById("totalC")
+const totalPP = document.getElementById("totalP")
 const pressDiv = document.querySelector(".press")
 const upgrades = document.querySelector(".upgrades")
 
@@ -66,6 +70,7 @@ function unlockUpgrades() {
         addUpgrade("More Agas", "25", "upIcon.svg", "UpMulti", 1)
         addUpgrade("SQUISH", "25", "upIcon.svg", "addPress", 100)
         addUpgrade("Stats", "99", "statsIcon.svg", "unlockSpecial", "'stats'")
+        addUpgrade("Stats+", "9", "statsIcon.svg", "unlockSpecial", "'statsExtra'")
         addUpgrade("SKIN", "10", "statsIcon.svg", "unlockSkin", "'waga.gif'")
         unlocked.push(1)
     }
@@ -126,6 +131,7 @@ function refreshPoints(amount) {
     updateStreak()
     updateStats(amount, "PPS")
     if (amount > 0) {
+        totalP += amount
         spawnParticles(amount)
     }
 }
@@ -136,6 +142,7 @@ function aga() {
         amount = mult
     }
     clicked = true
+    totalC += 1
     updateStats(1, "CPS")
     refreshPoints(amount)
     animateAga(amount)
@@ -369,6 +376,10 @@ function updateStats(amount, type) {
         }
         CPS.innerHTML = "CPS: " + CILS
         PPS.innerHTML = "PPS: " + PILS
+    }
+    if (specialUpgrades.includes("statsExtra")) {
+        totalPP.innerHTML = "Total Points: " + totalP
+        totalCP.innerHTML = "Total Clicks: " + totalC
     }
 }
 

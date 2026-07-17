@@ -61,15 +61,16 @@ main {
 .hammer {
     position: absolute;
     z-index: 1;
-    right: -186%;
-    top: -110%;
+    left: 200%;
+    bottom: 18%;
     pointer-events: none;
     display: block;
-    width: 125%;
+    width: 12rem;
 }
 
 .hammer img {
-    max-height: 30rem;
+    max-height: 26rem;
+    width: 100%;
     user-select: none;
     -webkit-user-drag: none;
     display: block;
@@ -114,6 +115,7 @@ main {
     left: 180%;
     bottom: -5%;
     width: 40%;
+    z-index: 2;
 }
 
 .wardrobe img {
@@ -206,14 +208,30 @@ main {
 }
 
 .statsCon{
-    height: 3rem;
+    height: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.statsCon p {
+    margin: 0.5rem;
 }
 
 .stats {
     display: flex;
     width: 10rem;
-    height: 100%;
+    height: 2rem;
     justify-content: space-around;
+}
+
+.statsExtra {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 4rem;
 }
 
 .spacer {
