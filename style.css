@@ -32,8 +32,8 @@ main {
 .gradient {
     position: absolute;
     z-index: 2;
-    left: -540%;
-    width: 24rem;
+    right: 250%;
+    width: 26rem;
     height: 75%;
     pointer-events: none;
     background: linear-gradient(90deg,rgba(244, 244, 244, 1) 0%, rgba(244, 244, 244, 1) 25%, rgba(244, 244, 244, 0) 100%);
@@ -42,18 +42,19 @@ main {
 .hand {
     position: absolute;
     z-index: 1;
-    right: 360%;
+    right: 330%;
     top: 32%;
     pointer-events: none;
     display: block;
     width: 15rem;
+    height: 50%;
 }
 
 .hand img {
     transform: translateX(-4rem);
     user-select: none;
     -webkit-user-drag: none;
-    height: auto;
+    height: 100%;
     display: block;
 }
 

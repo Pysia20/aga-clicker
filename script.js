@@ -378,8 +378,6 @@ function changeSkin() {
     let currentSkin = agaImg.src.split("/")
     currentSkin = currentSkin[currentSkin.length - 1]
     const currentIndex = unlockedSkins.indexOf(currentSkin)
-    console.log(currentIndex)
-    console.log(currentSkin)
     agaImg.src = "Assets/" + unlockedSkins[(currentIndex + 1) % (unlockedSkins.length)]
 }
 
