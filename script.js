@@ -64,6 +64,7 @@ function unlockUpgrades() {
     if (points > 10 && !unlocked.includes(1)) {
         addUpgrade("More Agas", "25", "upIcon.svg", "UpMulti", 1)
         addUpgrade("SQUISH", "25", "upIcon.svg", "addPress", 100)
+        addUpgrade("Stats", "99", "agaIcon.svg", "unlockSpecial", "'stats'")
         unlocked.push(1)
     }
     if (points > 50 && !unlocked.includes(2)) {
@@ -100,6 +101,21 @@ function unlockUpgrades() {
         addUpgrade("Test Ur PC", "10000", "hammerIcon.svg", "AddHammer", 69000)
         addUpgrade("Waga", "Priceless", "agaIcon.svg", "UpMulti", 1)
         unlocked.push(8)
+    }
+}
+
+function unlockSpecial(cost, what, object) {
+    if (cost <= points) {
+        points -= cost
+        specialUpgrades.push(what)
+        const temp = document.querySelector("." + what + ".hidden")
+        if (temp) {
+            temp.classList.remove("hidden")
+            console.log("test")
+        }
+        console.log(temp)
+        object.remove()
+        refreshPoints(0)
     }
 }
 
@@ -285,15 +301,6 @@ function pressAga() {
     }
 }
 
-function unlockSpecial(cost, what, object) {
-    if (cost <= points) {
-        points -= cost
-        specialUpgrades.push(what)
-        object.remove()
-        refreshPoints(0)
-    }
-}
-
 function autoClick() {
     handImg.animate([
             {transform: 'translateX(-4rem)'},
@@ -348,20 +355,22 @@ function breakStreak() {
 setInterval(breakStreak, 200)
 
 function updateStats(amount, type) {
-    if (type === "CPS") {
-        CILS += amount
-        setTimeout(() => {
-            CILS -= amount
-        }, 1000)
+    if (specialUpgrades.includes("stats")) {
+        if (type === "CPS") {
+            CILS += amount
+            setTimeout(() => {
+                CILS -= amount
+            }, 1000)
+        }
+        if (type === "PPS") {
+            PILS += amount
+            setTimeout(() => {
+                PILS -= amount
+            }, 1000)
+        }
+        CPS.innerHTML = "CPS: " + CILS
+        PPS.innerHTML = "PPS: " + PILS
     }
-    if (type === "PPS") {
-        PILS += amount
-        setTimeout(() => {
-            PILS -= amount
-        }, 1000)
-    }
-    CPS.innerHTML = "CPS: " + CILS
-    PPS.innerHTML = "PPS: " + PILS
 }
 
 //canvas stuff

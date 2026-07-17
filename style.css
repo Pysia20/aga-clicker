@@ -193,7 +193,7 @@ main {
 }
 
 .hidden {
-    display: none;
+    opacity: 0;
 }
 
 #fire {
