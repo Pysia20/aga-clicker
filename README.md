@@ -15,6 +15,8 @@
 - WebStorm for coding (and this README)
 - GIMP for image editing
 - Inkscape for creating and editing vector icons 
+- Audacity for VERY small amount of audio editing
+- Ezgif.com for GIF editing
 
 The code only uses basic HTML, CSS and JS :D
 

@@ -85,8 +85,31 @@ function unlockUpgrades() {
     }
     if (points > 10 && !unlocked.includes(1)) {
         addUpgrade("More Agas", "25", "upIcon.svg", "UpMulti", 1)
+        unlocked.push(1)
+    }
+    if (points > 50 && !unlocked.includes(2)) {
+        addUpgrade("John Hand", "50", "handIcon.svg", "AddClicker", 1)
+        addUpgrade("MMore Agas", "100", "upIcon.svg", "UpMulti", 1)
+        unlocked.push(2)
+    }
+    if (points > 66 && !unlocked.includes(3)) {
+        addUpgrade("Stats", "67", "statsIcon.svg", "unlockSpecial", "'stats'")
+        addUpgrade("Aganimation", "120", "agaIcon.svg", "unlockSpecial", "'aganimation'")
+        unlocked.push(3)
+    }
+    if (points > 150 && !unlocked.includes(4)) {
+        addUpgrade("Johner John", "111", "handIcon.svg", "AddClicker", 2)
+        addUpgrade("Aga Mitosis", "200", "agaIcon.svg", "unlockSpecial", "'particles'")
+        unlocked.push(4)
+    }
+    if (points > 200 && !unlocked.includes(5)) {
+        addUpgrade("Arson", "250", "fireIcon.svg", "unlockSpecial", "'streak'")
+        addUpgrade("MORE AGAS", "400", "upIcon.svg", "UpMulti", 2)
+    }
+    /*
+    if (points > 10 && !unlocked.includes(1)) {
+        addUpgrade("More Agas", "25", "upIcon.svg", "UpMulti", 1)
         addUpgrade("SQUISH", "25", "upIcon.svg", "addPress", 100)
-        addUpgrade("Stats", "99", "statsIcon.svg", "unlockSpecial", "'stats'")
         addUpgrade("Stats+", "9", "statsIcon.svg", "unlockSpecial", "'statsExtra,nerdaga.png'")
         addUpgrade("SKIN", "10", "statsIcon.svg", "unlockSkin", "'waga.gif'")
         addUpgrade("WIN", "10", "statsIcon.svg", "win", 0)
@@ -127,6 +150,7 @@ function unlockUpgrades() {
         addUpgrade("Waga", "Priceless", "agaIcon.svg", "UpMulti", 1)
         unlocked.push(8)
     }
+     */
 }
 
 function unlockSpecial(cost, what, object) {
@@ -453,6 +477,16 @@ function win(cost, nothing, object) {
 
 
 //Music stuff
+function unlockMusic(cost, nothing, object) {
+    if (cost <= points) {
+        const temp = document.querySelector(".musicPlayer.hidden")
+        temp.classList.remove("hidden")
+        points -= cost
+        object.remove()
+        refreshPoints(0)
+    }
+}
+
 function rewind() {
     music.pause()
     music.currentTime = 0
