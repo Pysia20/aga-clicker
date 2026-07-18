@@ -151,6 +151,7 @@ function refreshPoints(amount) {
     unlockUpgrades()
     updateStreak()
     updateStats(amount, "PPS")
+    checkIfSongEnded()
     if (amount > 0) {
         totalP += amount
         spawnParticles(amount)
@@ -487,6 +488,12 @@ function updateMute() {
         muteImg.src = "Assets/audioOn.svg"
     } else {
         muteImg.src = "Assets/audioOff.svg"
+    }
+}
+
+function checkIfSongEnded() {
+    if (music.ended) {
+        skip()
     }
 }
 
