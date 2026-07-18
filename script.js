@@ -468,6 +468,14 @@ function updateVolume(newVolume) {
     globalMusicVolume = newVolume
 }
 
+function mute() {
+    if (music.volume !== 0) {
+        music.volume = 0
+    } else {
+        music.volume = globalMusicVolume
+    }
+}
+
 //canvas stuff
 class Particle {
     constructor() {
