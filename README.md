@@ -31,11 +31,9 @@ Simply double-click the HTML file to open the website or open the folder in an I
 - Yes!
 
 ## Random Ideas For Later ;)
-- skins
 - leaderboard
 - multipliers as part of other upgrades
 - better style as upgrade
-- slugcat 
 - background skins
 - custom colors
 - visual upgrade to finger and hammer at some point

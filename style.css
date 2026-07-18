@@ -234,6 +234,39 @@ main {
     height: 4rem;
 }
 
+.musicPlayer {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 0.15rem black solid;
+    border-radius: 20px;
+    padding: 0.5rem;
+    width: 10rem;
+    height: 6rem;
+}
+
+.musicPlayer p {
+    border-bottom: 0.1rem black solid;
+}
+
+.musicControls {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 60%;
+}
+
+.musicControls img {
+    width: 20%;
+}
+
+.musicControls img:nth-child(2) {
+    width: 30%;
+}
+
 .spacer {
     height: 4rem;
     width: 1rem;

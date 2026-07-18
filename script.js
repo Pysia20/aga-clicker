@@ -22,6 +22,7 @@ let hammerTime = true
 let pressPower = 0
 let pressTime = true
 
+const music = new Audio("Assets/Monkeys-Spinning-Monkeys.mp3")
 
 //HTML getElements
 const pointsOut = document.getElementById("points")
@@ -415,6 +416,23 @@ function changeSkin() {
     currentSkin = currentSkin[currentSkin.length - 1]
     const currentIndex = unlockedSkins.indexOf(currentSkin)
     agaImg.src = "Assets/" + unlockedSkins[(currentIndex + 1) % (unlockedSkins.length)]
+}
+
+function rewind() {
+
+}
+
+function pause() {
+    if (music.paused) {
+        music.play()
+    } else {
+        music.pause()
+    }
+
+}
+
+function skip() {
+
 }
 
 //canvas stuff
