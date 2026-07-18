@@ -294,6 +294,17 @@ main {
     justify-content: space-between;
 }
 
+.extraMusicControls label {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.extraMusicControls label img{
+    width: 100%;
+}
+
 .extraMusicControls img {
     width: 10%;
 }

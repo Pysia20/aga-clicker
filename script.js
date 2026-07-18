@@ -490,6 +490,22 @@ function updateMute() {
     }
 }
 
+function addSong(files) {
+    const file = files[0]
+    if (file) {
+        const audioFile = new Audio(URL.createObjectURL(file))
+        playlist.push(audioFile)
+        music.pause()
+        music.currentTime = 0
+        music = audioFile
+        music.volume = globalMusicVolume
+        music.play()
+        playButton.src = "Assets/pouse.svg"
+        changeCredit()
+        updateMute()
+    }
+}
+
 //canvas stuff
 class Particle {
     constructor() {
