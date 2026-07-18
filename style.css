@@ -323,6 +323,35 @@ main {
     cursor: pointer;
 }
 
+.confetti {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 999;
+    background-color: rgb(35 35 35);
+    opacity: 0.1;
+    transition: opacity 8s ease-out;
+}
+
+.confetti img {
+    width: 100%;
+    height: 100%;
+}
+
+.winMessage {
+    position: absolute;
+    right: 50%;
+    left: 50%;
+    top: 50%;
+    bottom: 50%;
+    font-size: 6rem;
+    width: 40rem;
+    font-weight: bolder;
+    color: #fcff47;
+    transform: translateX(-50%) translateY(-50%);
+}
+
 .spacer {
     height: 4rem;
     width: 1rem;

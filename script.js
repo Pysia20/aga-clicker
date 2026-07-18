@@ -26,6 +26,7 @@ let pressTime = true
 let music = new Audio("Assets/MonkeysSpinningMonkeys-KevinMacLeod.mp3")
 let playlist = [music, new Audio("Assets/Carefree-KevinMacLeod.mp3"), new Audio("Assets/FluffingADuck-KevinMacLeod.mp3"), new Audio("Assets/TheBuilder-KevinMacLeod.mp3")]
 let globalMusicVolume = 0.5
+const victorySong = new Audio("Assets/winSound.mp3")
 
 //HTML getElements
 const pointsOut = document.getElementById("points")
@@ -42,6 +43,7 @@ const playButton = document.getElementById("playButton")
 const sTitle = document.getElementById("sTitle")
 const sTitle2 = document.getElementById("sTitle2")
 const muteImg = document.getElementById("muteImg")
+const conffetiDiv = document.getElementById("confettiDiv")
 const pressDiv = document.querySelector(".press")
 const upgrades = document.querySelector(".upgrades")
 
@@ -87,6 +89,7 @@ function unlockUpgrades() {
         addUpgrade("Stats", "99", "statsIcon.svg", "unlockSpecial", "'stats'")
         addUpgrade("Stats+", "9", "statsIcon.svg", "unlockSpecial", "'statsExtra,nerdaga.png'")
         addUpgrade("SKIN", "10", "statsIcon.svg", "unlockSkin", "'waga.gif'")
+        addUpgrade("WIN", "10", "statsIcon.svg", "win", 0)
         unlocked.push(1)
     }
     if (points > 50 && !unlocked.includes(2)) {
@@ -426,6 +429,30 @@ function changeSkin() {
     agaImg.src = "Assets/" + unlockedSkins[(currentIndex + 1) % (unlockedSkins.length)]
 }
 
+function win(cost, nothing, object) {
+    if (cost <= points) {
+        music.pause()
+        music = victorySong
+        music.volume = globalMusicVolume
+        music.play()
+        conffetiDiv.classList.remove("hidden")
+        conffetiDiv.style.opacity = "0"
+        conffetiDiv.offsetHeight
+        conffetiDiv.style.opacity = "1"
+        points -= cost
+        refreshPoints(0)
+        setTimeout(() => {
+            conffetiDiv.style.opacity = "0"
+            unlockSkin(0, "coolaga.png", object)
+            setTimeout(() => {
+                conffetiDiv.classList.add("hidden")
+            }, 4000)
+        }, 10000)
+    }
+}
+
+
+//Music stuff
 function rewind() {
     music.pause()
     music.currentTime = 0
