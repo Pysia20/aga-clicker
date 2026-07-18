@@ -243,13 +243,30 @@ main {
     align-items: center;
     border: 0.15rem black solid;
     border-radius: 20px;
-    padding: 0.5rem;
     width: 10rem;
-    height: 6rem;
+    padding: 1rem 0.5rem;
 }
 
-.musicPlayer p {
+.sTitleDiv {
+    margin-bottom: 0.25rem;
+    margin-top: 0.25rem;
     border-bottom: 0.1rem black solid;
+    text-wrap: nowrap;
+    height: 1.0rem;
+    overflow: hidden;
+    max-width: 100%;
+    display: flex;
+}
+
+.sTitles {
+    display: flex;
+    white-space: nowrap;
+    animation: scrollText 5s linear infinite;
+}
+
+.sTitleDiv p {
+    padding-right: 3rem;
+    margin: 0;
 }
 
 .musicControls {
@@ -261,6 +278,10 @@ main {
 
 .musicControls img {
     width: 20%;
+}
+
+.musicControls img:hover {
+    cursor: pointer;
 }
 
 .musicControls img:nth-child(2) {
@@ -290,4 +311,13 @@ main {
 #aga {
     height: 15rem;
     max-width: 30rem;
+}
+
+@keyframes scrollText {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }

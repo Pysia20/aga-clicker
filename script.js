@@ -22,7 +22,9 @@ let hammerTime = true
 let pressPower = 0
 let pressTime = true
 
-const music = new Audio("Assets/Monkeys-Spinning-Monkeys.mp3")
+//music
+let music = new Audio("Assets/MonkeysSpinningMonkeys-KevinMacLeod.mp3")
+let playlist = [music, new Audio("Assets/Carefree-KevinMacLeod.mp3"), new Audio("Assets/FluffingADuck-KevinMacLeod.mp3"), new Audio("Assets/TheBuilder-KevinMacLeod.mp3")]
 
 //HTML getElements
 const pointsOut = document.getElementById("points")
@@ -35,6 +37,9 @@ const PPS = document.getElementById("pps")
 const CPS = document.getElementById("cps")
 const totalCP = document.getElementById("totalC")
 const totalPP = document.getElementById("totalP")
+const playButton = document.getElementById("playButton")
+const sTitle = document.getElementById("sTitle")
+const sTitle2 = document.getElementById("sTitle2")
 const pressDiv = document.querySelector(".press")
 const upgrades = document.querySelector(".upgrades")
 
@@ -419,20 +424,40 @@ function changeSkin() {
 }
 
 function rewind() {
-
+    music.pause()
+    music.currentTime = 0
+    music = playlist[(playlist.indexOf(music) - 1) % playlist.length]
+    music.play()
+    playButton.src = "Assets/pouse.svg"
+    changeCredit()
 }
 
 function pause() {
     if (music.paused) {
         music.play()
+        playButton.src = "Assets/pouse.svg"
     } else {
         music.pause()
+        playButton.src = "Assets/play.svg"
     }
-
 }
 
 function skip() {
+    music.pause()
+    music.currentTime = 0
+    music = playlist[(playlist.indexOf(music) + 1) % playlist.length]
+    music.play()
+    playButton.src = "Assets/pouse.svg"
+    changeCredit()
+}
 
+function changeCredit() {
+    let songName = music.src.split("/")
+    songName = songName[songName.length - 1]
+    songName = songName.split(".")
+    songName = songName[0]
+    sTitle.innerHTML = songName + "  "
+    sTitle2.innerHTML = songName + "  "
 }
 
 //canvas stuff
