@@ -304,6 +304,14 @@ main {
     align-self: flex-end;
 }
 
+.extraMusicControls img:hover {
+    cursor: pointer;
+}
+
+.extraMusicControls input:hover {
+    cursor: pointer;
+}
+
 .spacer {
     height: 4rem;
     width: 1rem;

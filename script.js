@@ -41,6 +41,7 @@ const totalPP = document.getElementById("totalP")
 const playButton = document.getElementById("playButton")
 const sTitle = document.getElementById("sTitle")
 const sTitle2 = document.getElementById("sTitle2")
+const muteImg = document.getElementById("muteImg")
 const pressDiv = document.querySelector(".press")
 const upgrades = document.querySelector(".upgrades")
 
@@ -432,6 +433,7 @@ function rewind() {
     music.play()
     playButton.src = "Assets/pouse.svg"
     changeCredit()
+    updateMute()
 }
 
 function pause() {
@@ -452,6 +454,7 @@ function skip() {
     music.play()
     playButton.src = "Assets/pouse.svg"
     changeCredit()
+    updateMute()
 }
 
 function changeCredit() {
@@ -466,13 +469,24 @@ function changeCredit() {
 function updateVolume(newVolume) {
     music.volume = newVolume
     globalMusicVolume = newVolume
+    updateMute()
 }
 
 function mute() {
     if (music.volume !== 0) {
         music.volume = 0
+        muteImg.src = "Assets/audioOff.svg"
     } else {
         music.volume = globalMusicVolume
+        muteImg.src = "Assets/audioOn.svg"
+    }
+}
+
+function updateMute() {
+    if (music.volume !== 0) {
+        muteImg.src = "Assets/audioOn.svg"
+    } else {
+        muteImg.src = "Assets/audioOff.svg"
     }
 }
 
