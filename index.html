@@ -51,6 +51,11 @@
             </div>
         </div>
         <div class="musicPlayer">
+            <div class="extraMusicControls">
+                <img src="Assets/play.svg" alt="add song">
+                <input type="range" name="volume" id="volume" onchange="updateVolume(this.value)" min="0" max="1" step="0.01">
+                <img src="Assets/play.svg" alt="volume">
+            </div>
             <div class="sTitleDiv">
                 <div class="sTitles">
                     <p id="sTitle">MonkeysSpinningMonkeys-KevinMacLeod</p>

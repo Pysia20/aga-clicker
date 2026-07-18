@@ -244,7 +244,7 @@ main {
     border: 0.15rem black solid;
     border-radius: 20px;
     width: 10rem;
-    padding: 1rem 0.5rem;
+    padding: 0.3rem 0.5rem 0.5rem;
 }
 
 .sTitleDiv {
@@ -286,6 +286,22 @@ main {
 
 .musicControls img:nth-child(2) {
     width: 30%;
+}
+
+.extraMusicControls {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.extraMusicControls img {
+    width: 10%;
+}
+
+.extraMusicControls input {
+    width: 75%;
+    margin-left: 5%;
+    align-self: flex-end;
 }
 
 .spacer {

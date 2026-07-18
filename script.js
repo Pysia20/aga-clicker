@@ -25,6 +25,7 @@ let pressTime = true
 //music
 let music = new Audio("Assets/MonkeysSpinningMonkeys-KevinMacLeod.mp3")
 let playlist = [music, new Audio("Assets/Carefree-KevinMacLeod.mp3"), new Audio("Assets/FluffingADuck-KevinMacLeod.mp3"), new Audio("Assets/TheBuilder-KevinMacLeod.mp3")]
+let globalMusicVolume = 0.5
 
 //HTML getElements
 const pointsOut = document.getElementById("points")
@@ -427,6 +428,7 @@ function rewind() {
     music.pause()
     music.currentTime = 0
     music = playlist[(playlist.indexOf(music) - 1) % playlist.length]
+    music.volume = globalMusicVolume
     music.play()
     playButton.src = "Assets/pouse.svg"
     changeCredit()
@@ -446,6 +448,7 @@ function skip() {
     music.pause()
     music.currentTime = 0
     music = playlist[(playlist.indexOf(music) + 1) % playlist.length]
+    music.volume = globalMusicVolume
     music.play()
     playButton.src = "Assets/pouse.svg"
     changeCredit()
@@ -458,6 +461,11 @@ function changeCredit() {
     songName = songName[0]
     sTitle.innerHTML = songName + "  "
     sTitle2.innerHTML = songName + "  "
+}
+
+function updateVolume(newVolume) {
+    music.volume = newVolume
+    globalMusicVolume = newVolume
 }
 
 //canvas stuff
