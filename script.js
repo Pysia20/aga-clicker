@@ -94,63 +94,48 @@ function unlockUpgrades() {
     }
     if (points > 66 && !unlocked.includes(3)) {
         addUpgrade("Stats", "67", "statsIcon.svg", "unlockSpecial", "'stats'")
-        addUpgrade("Aganimation", "120", "agaIcon.svg", "unlockSpecial", "'aganimation'")
         unlocked.push(3)
     }
     if (points > 150 && !unlocked.includes(4)) {
         addUpgrade("Johner John", "111", "handIcon.svg", "AddClicker", 2)
-        addUpgrade("Aga Mitosis", "200", "agaIcon.svg", "unlockSpecial", "'particles'")
+        addUpgrade("Aganimation", "120", "agaIcon.svg", "unlockSpecial", "'aganimation'")
         unlocked.push(4)
     }
     if (points > 200 && !unlocked.includes(5)) {
-        addUpgrade("Arson", "250", "fireIcon.svg", "unlockSpecial", "'streak'")
-        addUpgrade("MORE AGAS", "400", "upIcon.svg", "UpMulti", 2)
-    }
-    /*
-    if (points > 10 && !unlocked.includes(1)) {
-        addUpgrade("More Agas", "25", "upIcon.svg", "UpMulti", 1)
-        addUpgrade("SQUISH", "25", "upIcon.svg", "addPress", 100)
-        addUpgrade("Stats+", "9", "statsIcon.svg", "unlockSpecial", "'statsExtra,nerdaga.png'")
-        addUpgrade("SKIN", "10", "statsIcon.svg", "unlockSkin", "'waga.gif'")
-        addUpgrade("WIN", "10", "statsIcon.svg", "win", 0)
-        unlocked.push(1)
-    }
-    if (points > 50 && !unlocked.includes(2)) {
-        addUpgrade("John Hand", "50", "handIcon.svg", "AddClicker", 1)
-        addUpgrade("MMore Agas", "100", "upIcon.svg", "UpMulti", 1)
-        unlocked.push(2)
-    }
-    if (points > 99 && !unlocked.includes(3)) {
-        addUpgrade("Aganimation", "99", "agaIcon.svg", "unlockSpecial", "'aganimation'")
-        addUpgrade("Johner John", "111", "handIcon.svg", "AddClicker", 2)
-        unlocked.push(3)
-    }
-    if (points > 200 && !unlocked.includes(4)) {
         addUpgrade("Aga Mitosis", "200", "agaIcon.svg", "unlockSpecial", "'particles'")
-        addUpgrade("Arson", "250", "fireIcon.svg", "unlockSpecial", "'streak'")
+        addUpgrade("Arson", "250", "fireIcon.svg", "unlockSpecial", "'streak,sansaga.png'")
         addUpgrade("MORE AGAS", "400", "upIcon.svg", "UpMulti", 2)
-        unlocked.push(4)
-    }
-    if (points > 400 && !unlocked.includes(5)) {
-        addUpgrade("Bonk", "500", "hammerIcon.svg", "AddHammer", 50)
-        addUpgrade("Johniest John", "700", "handIcon.svg", "AddClicker", 3)
         unlocked.push(5)
     }
-    if (points > 600 && !unlocked.includes(6)) {
-        addUpgrade("B O N K", "500", "hammerIcon.svg", "AddHammer", 50)
-        addUpgrade("Promote John", "1000", "hammerIcon.svg", "unlockSpecial", "'autoHammer'")
+    if (points > 500 && !unlocked.includes(6)) {
+        addUpgrade("Bonk", "500", "hammerIcon.svg", "AddHammer", 50)
+        addUpgrade("Stats+", "1415", "statsIcon.svg", "unlockSpecial", "'statsExtra,nerdaga.png'")
         unlocked.push(6)
     }
-    if (points > 1000 && !unlocked.includes(7)) {
-        addUpgrade("Aga Blessing", "2000", "agaIcon.svg", "UpMulti", 10)
+    if (points > 750 && !unlocked.includes(7)) {
+        addUpgrade("Promote John", "800", "hammerIcon.svg", "unlockSpecial", "'autoHammer'")
+        addUpgrade("Good Beats", "750", "upIcon.svg", "unlockMusic", 0)
         unlocked.push(7)
     }
-    if (points > 5000 && !unlocked.includes(8)) {
-        addUpgrade("Test Ur PC", "10000", "hammerIcon.svg", "AddHammer", 69000)
-        addUpgrade("Waga", "Priceless", "agaIcon.svg", "UpMulti", 1)
+    if (points > 1000 && !unlocked.includes(8)) {
+        addUpgrade("SQUISH", "1200", "press.svg", "addPress", 200)
+        addUpgrade("Furry", "10000", "agaIcon.svg", "unlockSkin", "'waga.gif'")
         unlocked.push(8)
     }
-     */
+    if (points > 2000 && !unlocked.includes(9)) {
+        addUpgrade("B O N K", "2000", "hammerIcon.svg", "AddHammer", 100)
+        addUpgrade("Aga Blessing", "5000", "agaIcon.svg", "UpMulti", 10)
+        unlocked.push(9)
+    }
+    if (points > 5000 && !unlocked.includes(10)) {
+        addUpgrade("Scugaga", "6000", "agaIcon.svg", "unlockSkin", "'scugaga.png'")
+        addUpgrade("SQUISHER", "5000", "press.svg", "addPress", 300)
+        unlocked.push(10)
+    }
+    if (points > 9999 && !unlocked.includes(11)) {
+        addUpgrade("WIN", "10000", "coolaga.png", "win", 0)
+        unlocked.push(11)
+    }
 }
 
 function unlockSpecial(cost, what, object) {

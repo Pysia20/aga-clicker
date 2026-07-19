@@ -39,7 +39,6 @@ Simply double-click the HTML file to open the website or open the folder in an I
 - background skins
 - custom colors
 - visual upgrade to finger and hammer at some point
-- some music player
 - rgb gaming lights
 - explosion sfx on click
 - different screens/rooms
